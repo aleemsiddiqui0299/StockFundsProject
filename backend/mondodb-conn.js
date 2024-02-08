@@ -9,8 +9,9 @@ const authorSchema = new Schema({
 
 const Author = mongoose.model('Author', authorSchema);
 
+Vercel
 //can define schema and models before connecting
-mongoose.connect('mongodb+srv://<username>:<password>@<cluster>.mongodb.net/',{
+mongoose.connect('mongodb+srv://<username>:<password>@<cluster-id>.mongodb.net/',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(()=>{
