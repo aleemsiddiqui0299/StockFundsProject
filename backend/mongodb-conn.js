@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { ApolloServer } = require('@apollo/server')
-const { Products } = require('./models/authors')
+const { Products } = require('./models/products')
 
 //Connecting to mongodb server
 mongoose.connect('YOUR_MONGODB_CONNECTION_STRING',{
