@@ -1,4 +1,6 @@
 const {Equities} = require('./models/products')
+const {Companies} = require('./models/companies')
+
 
 const typeDef=`
     type Equity{
