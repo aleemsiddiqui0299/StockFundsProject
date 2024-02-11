@@ -7,6 +7,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
+//uncomment to test the models locally
 // const { Equities } = require('./mongodb-conn')
 
 async function startServer(){
@@ -15,10 +16,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 // Connecting to mongodb server
-// await mongoose.connect('YOUR_MONGODB_CONNECTION_STRING',{
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// })
+await mongoose.connect('YOUR_MONGODB_CONNECTION_STRING',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
 
 const server = new ApolloServer({
     typeDefs: typeDef,
@@ -33,6 +34,7 @@ app.use('/graphql', expressMiddleware(server));
 app.listen(8000, ()=>console.log('Server connected at 8000 port'));    
 }
 
+//uncomment to start graphql server with mongodb integrated resolvers
 startServer();
 
 

@@ -5,18 +5,16 @@ const mongoose = require('mongoose');
 
 const typeDef=gql`
     type Equity{
-        id: ID
         name: String
         category: String
-        company_id: Int!
+        company_id: Int
         open_value: Float
         close_value: Float
         company: Company
     }
 
     type Company{
-        id: ID
-        companyId: Int!
+        companyId: Int
         name: String
         year: Int
     }
@@ -24,18 +22,49 @@ const typeDef=gql`
     type Query{
         getAllEquities: [Equity]
         getAllCompanies: [Company]
-        getEquity(company_id: Int!): Equity
+        getEquity(name: String): Equity
+        getCompany(companyId: Int): Company
     }
 `;
 const resolvers= {
     Equity: {
+
         //logic to grab equity based on 
-        company:async (equity)=> await Companies.find({ companyId: equity.company_id})
+        company: async function(parent) {
+
+            console.log('Parent equity name : '+ parent.name+" equity company id : ", parent.company_id);
+            const equity = await Companies.findOne({ companyId: parent.company_id});
+            console.log('Result for company in equity : ', equity);
+            return equity;
+
+        }
     },
     Query: {
+
         getAllEquities : async ()=> await Equities.find(),
         getAllCompanies : async ()=> await Companies.find(),
-        getEquity: async(parent, {id})=> await Equities.find({ company_id: id})
+
+        getEquity: async function(parent, {name}) {
+            try{
+                console.log("RECEIVED name for equity search: ", name);
+                result = await Equities.findOne({ name });
+                console.log("Result equity : ", result);
+                return result;
+            }catch(error){
+                console.log("Database Error: ", error);
+            } 
+        },
+        
+        getCompany: async function(parent, {companyId}) {
+            try{
+                console.log("RECEIVED Company_id for Company search: ", companyId);
+                result = await Companies.findOne({ companyId });
+                console.log("Result company : ", result);
+                return result;
+            }catch(error){
+                console.log("Database Error: ", error);
+            } 
+        },
     }
 };
 

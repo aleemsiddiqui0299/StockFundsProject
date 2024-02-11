@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const { ApolloServer } = require('@apollo/server')
 const { Equities } = require('./models/products')
+const {Companies} = require('./models/companies')
 
-//Connecting to mongodb server
+//Connecting to mongodb server for local testing of models
 mongoose.connect('YOUR_MONGODB_CONNECTION_STRING',{
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -20,7 +21,11 @@ db.once('open', function(){
 });     
 
 // Finding documents in products collection
-Equities.find({})
+Equities.find({ company_id: 103})
+.then(products => console.log(products))
+.catch(err => console.error("Error fetching authors ",err));
+
+Companies.find({ year: { $gt: 1984 }})
 .then(products => console.log(products))
 .catch(err => console.error("Error fetching authors ",err));
 
