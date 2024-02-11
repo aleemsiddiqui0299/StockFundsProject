@@ -13,12 +13,12 @@ async function startServer(){
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors);
-//Connecting to mongodb server
-await mongoose.connect('YOUR_MONGODB_CONNECTION_STRING',{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+app.use(cors());
+// Connecting to mongodb server
+// await mongoose.connect('YOUR_MONGODB_CONNECTION_STRING',{
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// })
 
 const server = new ApolloServer({
     typeDefs: typeDef,
@@ -28,13 +28,9 @@ const server = new ApolloServer({
 await server.start();
 app.use('/graphql', expressMiddleware(server));
 
-// const server = new ApolloServer({typeDefs: "", resolvers: ""});
-// await server.start();
-
-// app.use('/graphql', expressMiddleware(server));
 
 // api to be used later = https://www.alphavantage.co/
-app.listen(5000, ()=>console.log('Server connected at 5000 port'));    
+app.listen(8000, ()=>console.log('Server connected at 8000 port'));    
 }
 
 startServer();
