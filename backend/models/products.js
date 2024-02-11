@@ -25,5 +25,5 @@ const equitiesSchema = new mongoose.Schema({
     }
  },{toJSON: { virtuals : true }});
  
- const Equities = mongoose.model('Equities', productsSchema);
+ const Equities = mongoose.model('Equities', equitiesSchema);
  module.exports = { Equities };

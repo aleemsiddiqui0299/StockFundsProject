@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { ApolloServer } = require('@apollo/server')
-const { Products } = require('./models/products')
+const { Equities } = require('./models/products')
 
 //Connecting to mongodb server
 mongoose.connect('YOUR_MONGODB_CONNECTION_STRING',{
@@ -17,11 +17,11 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', function(){
     console.log('Connected to database : '+db.name)
-});
+});     
 
 // Finding documents in products collection
-Products.find({}).select('name category price')
+Equities.find({})
 .then(products => console.log(products))
 .catch(err => console.error("Error fetching authors ",err));
 
-module.exports = Products;
+// module.exports = Equities;

@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 
 const companiesSchema = new mongoose.Schema({
-    companyId: Int,
+    companyId: Number,
     name: String,
-    year: Int
+    year: Number
 }, {toJSON: {virtuals: true}});
 
 const Companies = mongoose.model('Companies', companiesSchema);

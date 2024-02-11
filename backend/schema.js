@@ -23,8 +23,8 @@ const typeDef=`
         getAllCompanies: [Company]
         getEquity(company_id: Int!): Equity
     }
-`
-resolvers: {
+`;
+resolvers= {
     Equity: {
         //logic to grab equity based on 
         company:async (equity)=> await Equities.find({ $company_id: equity.company_id})
@@ -32,8 +32,10 @@ resolvers: {
     Query: {
         getAllEquities : async ()=> await Equities.find({}),
         getAllCompanies : async ()=> await Companies.find({}),
-        getEquity: async(parent, {id}): await Equities.find({ $company_id: equity.company_id}),
+        getEquity: async(parent, {id})=> await Equities.find({ company_id: id})
     }
-}
+};
+
+module.exports={typeDef, resolvers};
 //{"name":"TCS" ,category: "IT", "company_id": 101, "open_value": 123.5, "close_value": 125.1},
 //{ "companyId":101, "name":"Tata Group" , "year":1968 }, 
