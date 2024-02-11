@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 // Define queries here
 
-const GET_ONLY_TRADES = gql`
+export const GET_ONLY_TRADES = gql`
   query get_all_trades {
     getAllEquities {
       name
@@ -14,7 +14,7 @@ const GET_ONLY_TRADES = gql`
   }
 `;
 
-const GET_EQUITIES_COMPANIES = gql`
+export const GET_EQUITIES_COMPANIES = gql`
   query get_all_equities_with_companies {
     getAllEquities {
       name
@@ -26,7 +26,7 @@ const GET_EQUITIES_COMPANIES = gql`
   }
 `;
 
-const GET_COMPANIES = gql`
+export const GET_COMPANIES = gql`
   query get_all_companies {
     getAllCompanies {
       name
@@ -37,7 +37,7 @@ const GET_COMPANIES = gql`
 `;
 
 // Parameterized queries
-const GET_EQUITY_BY_NAME = gql`
+export const GET_EQUITY_BY_NAME = gql`
   query get_equity_by_name($eq_name: String!) {
     getEquity(name: $eq_name) {
       name
@@ -51,7 +51,7 @@ const GET_EQUITY_BY_NAME = gql`
   }
 `;
 
-const GET_COMPANY_BY_ID = gql`
+export const GET_COMPANY_BY_ID = gql`
   query get_company_by_id($comp_id: Int!) {
     getCompany(companyId: $comp_id) {
       name
@@ -61,10 +61,3 @@ const GET_COMPANY_BY_ID = gql`
   }
 `;
 
-export default {
-  GET_ONLY_TRADES,
-  GET_EQUITIES_COMPANIES,
-  GET_COMPANIES,
-  GET_EQUITY_BY_NAME,
-  GET_COMPANY_BY_ID
-};

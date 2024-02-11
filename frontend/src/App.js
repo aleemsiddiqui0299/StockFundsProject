@@ -1,25 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+// import CompanyList from './components/companyList/CompanyList';
+// import StockList from './components/stockList/StockList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>List of All Stocks and Companies</h1>
     </div>
-  );
+  )
 }
 
 export default App;
