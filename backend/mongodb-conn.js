@@ -13,12 +13,12 @@ mongoose.connect('YOUR_MONGODB_CONNECTION_STRING',{
     console.error("Initial error ", err);
 });
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'connection error: '));
-db.once('open', function(){
-    console.log('Connected to database : '+db.name)
-});     
+// db.on('error', console.error.bind(console, 'connection error: '));
+// db.once('open', function(){
+//     console.log('Connected to database : '+db.name)
+// });     
 
 // Finding documents in products collection
 Equities.find({ company_id: 103})
