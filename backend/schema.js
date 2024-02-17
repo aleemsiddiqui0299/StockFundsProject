@@ -1,5 +1,4 @@
 const { gql } = require('graphql-tag')
-
 const typeDef=gql`
     type Equity{
         name: String
@@ -9,13 +8,11 @@ const typeDef=gql`
         close_value: Float
         company: Company
     }
-
     type Company{
         companyId: Int
         name: String
         year: Int
     }
-
     type Query{
         getAllEquities: [Equity]
         getAllCompanies: [Company]
@@ -23,6 +20,4 @@ const typeDef=gql`
         getCompany(companyId: Int): Company
     }
 `;
-
-
 module.exports={typeDef};
